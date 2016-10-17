@@ -1,0 +1,11 @@
+coreapi==2.0.8
+Django==1.10.2
+django-rest-swagger==2.0.7
+djangorestframework==3.4.7
+itypes==1.1.0
+openapi-codec==1.1.5
+pyFirmata==1.0.3
+pyserial==3.2.1
+requests==2.11.1
+simplejson==3.8.2
+uritemplate==3.0.0
