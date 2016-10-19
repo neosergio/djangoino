@@ -1,0 +1,8 @@
+# local storage
+*.sqlite3
+
+# IDE
+.idea/
+
+# Python temporal files
+*.pyc
