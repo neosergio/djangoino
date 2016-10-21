@@ -21,6 +21,7 @@ from activities import views
 
 router = DefaultRouter()
 router.register(r'activities', views.ActivityViewset, 'activities')
+router.register(r'devices', views.DeviceViewset, 'devices')
 
 schema_view = get_swagger_view(title='Django Arduino API')
 
