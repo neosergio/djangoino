@@ -13,13 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
+from activities import views
+
+router = DefaultRouter()
+router.register(r'activities', views.ActivityViewset, 'activities')
 
 schema_view = get_swagger_view(title='Django Arduino API')
 
 urlpatterns = [
     url(r'^$', schema_view),
+    url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
 ]
