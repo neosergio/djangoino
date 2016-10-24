@@ -8,9 +8,11 @@ PORT = '/dev/cu.usbmodem1421'
 
 board = Arduino(PORT)
 
+
 class ActivityViewset(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
+
 
 class DeviceInteraction(viewsets.ViewSet):
     @detail_route()
