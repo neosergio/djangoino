@@ -1,7 +1,7 @@
 """djangoino URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.10/topics/http/urls/
+    https://docs.djangoproject.com/en/1.11/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,20 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from rest_framework.routers import DefaultRouter
-from rest_framework_swagger.views import get_swagger_view
-from activities import views
-
-router = DefaultRouter()
-router.register(r'activities', views.ActivityViewset, 'activities')
-router.register(r'devices', views.DeviceInteraction, 'devices')
-
-schema_view = get_swagger_view(title='Django Arduino API')
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-    url(r'^$', schema_view),
-    url(r'^', include(router.urls)),
-    url(r'api-auth/', include('rest_framework.urls',
-                              namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
+    url(r'^activities/', include('activity.urls', namespace='activities')),
+    url(r'^docs/', include('rest_framework_docs.urls')),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
